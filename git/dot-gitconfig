@@ -1,0 +1,101 @@
+[include]
+    path = ~/.gitconfig.local
+[credential]
+    # save credentials in memory for 3600 seconds
+    helper = cache --timeout=3600
+[core]
+    abbrev = 12
+    # from git 2.8.0
+    untrackedcache = true
+    #whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor = vim
+    # use delta [https://github.com/dandavison/delta]
+    pager = delta --dark 
+    # Git will not perform any conversion when checking out text files. 
+    # When committing text files, CRLF wiil be converted to LF.
+    # Use input for Linux/OSX development
+    autocrlf = input
+    excludesfile = ~/.gitignore
+[pager]
+    diff   = delta
+    log    = delta
+    reflog = delta
+    show   = delta
+[color]
+    ui = auto
+    pager = true
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = 227
+    commit = 227 bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[interactive]
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-interactivediffFilter
+    diffFilter = delta --color-only
+[status]
+    showUntrackedFiles = all
+[fetch]
+    # Remove unreachable objects on fetch  
+    prune = true
+[pull]
+    # use --rebase on pull
+    rebase = true
+[push]
+    followTags = true
+[branch]
+    autoSetupRebase = always
+[rebase]
+    abbreviateCommands = true
+    autoSquash = true
+    autoStash = true
+[rerere]
+    enabled = true
+    autoUpdate = true
+[grep]
+    fullname = true
+    threads = 3
+[diff]
+    indentHeuristic = true
+    mnemonicPrefix = true
+    renames = copies
+[difftool]
+    prompt = false
+[merge]
+    #ff = only
+    conflictStyle = diff3
+[mergetool]
+    prompt = false
+[tag]
+    sort = version:refname
+[transfer]
+    fsckobjects = true
+[remote "origin"]
+    fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
+[include]
+    path = ~/.gitalias
+[sequence]
+    editor = vim
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+[init]
+	defaultBranch = main
