@@ -1,4 +1,3 @@
-
 # .dotfiles
 
 My macOS-specific dotfiles 🤘.
@@ -43,7 +42,7 @@ chsh -s "$(command -v fish)"
 
 `stow fish`
 
-## Install fisher (fish plugin manager) and the plugings
+## Install fisher (fish plugin manager) and the plugins
 
 ```
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
@@ -88,6 +87,10 @@ This is a template:
 
 `stew lsd`
 
+
+## Neovim
+
+I use [AstroVim](https://github.com/AstroNvim/AstroNvim).
 
 ## Development
 
