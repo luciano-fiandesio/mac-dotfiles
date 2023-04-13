@@ -163,31 +163,18 @@ dev/node/setup.sh
 I prefer to install IntelliJ by [downloading](https://www.jetbrains.com/idea/download/#section=mac) the dmg directly from Jetbrains.
 
 Theme: [OneDark](https://plugins.jetbrains.com/plugin/11938-one-dark-theme)
+
 Fonts: [MonoLisa](https://www.monolisa.dev) - ligatures enabled
 
-Plugins:
+**Plugins:**
 
-#### AceJump
 
-[AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
+- [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
 
 Hotkey: `hyper + ;`
 
-#### Github Copilot
-
-[Copilot](https://plugins.jetbrains.com/plugin/17718-github-copilot)
-
-#### JPA Buddy
-
-[JPA Buddy](https://plugins.jetbrains.com/plugin/15075-jpa-buddy)
-
-#### Mario Progress Bar
-
-[Mario Progress Bar](https://plugins.jetbrains.com/plugin/14708-mario-progress-bar)
-
-#### Rainbow Bracket
-
-[Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
-
-#### Return Highlighter
-[Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)
+- [Copilot](https://plugins.jetbrains.com/plugin/17718-github-copilot)
+- [JPA Buddy](https://plugins.jetbrains.com/plugin/15075-jpa-buddy)
+- [Mario Progress Bar](https://plugins.jetbrains.com/plugin/14708-mario-progress-bar)
+- [Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
+- [Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)
