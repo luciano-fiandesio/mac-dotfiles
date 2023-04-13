@@ -4,6 +4,8 @@ My macOS-specific dotfiles 🤘.
 
 I also maintain a ArchLinux-specific dotfiles repo.
 
+![kitty](doc/screenshot.png?raw=true)
+
 This dotfiles are customized for my needs and are mostly revolving around building a pleasant development experience.
 
 The majority of these dotfiles can be managed using [Gnu Stow](https://www.gnu.org/software/stow/).
@@ -41,6 +43,13 @@ chsh -s "$(command -v fish)"
 ## Configure the fish shell
 
 `stow fish`
+
+Fish automatically loads a `.local.fish` file that can be used to store secrets and API keys:
+
+.local.fish
+```
+set -Ux OPENAI_API_KEY sk-12345667
+```
 
 ## Install fisher (fish plugin manager) and the plugins
 
@@ -85,12 +94,18 @@ This is a template:
 
 [LSDeluxe](https://github.com/lsd-rs/lsd): a `ls` rewrite with fancy colors and icons.
 
-`stew lsd`
+`stow lsd`
 
 
 ## Neovim
 
 I use [AstroVim](https://github.com/AstroNvim/AstroNvim).
+
+## Karabinier
+
+Mainly to setup the Hyperkey (`caps_lock` to `command+control+option+shift`) and get the `~` key to work. 
+
+`stow karabinier`
 
 ## Development
 
@@ -109,6 +124,9 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 ```
 
+### Docker
+
+
 
 ### Install other development dependencies
 
@@ -119,7 +137,7 @@ Setup `direnv`
 ./dev/setup.sh
 ```
 
-### java
+#### java
 
 ```
 dev/java/setup.sh
@@ -128,14 +146,48 @@ dev/java/setup.sh
 This will install `sdkman` <https://sdkman.io>.
 Install the required JVM and tooling (Gradle, Maven, etc.)
 
-### python
+#### python
 
 ```
 ./dev/python/setup.sh
 ```
 
-### node
+#### node
 
 ```
 dev/node/setup.sh
 ```
+
+### IntelliJ
+
+I prefer to install IntelliJ by [downloading](https://www.jetbrains.com/idea/download/#section=mac) the dmg directly from Jetbrains.
+
+Theme: [OneDark](https://plugins.jetbrains.com/plugin/11938-one-dark-theme)
+Fonts: [MonoLisa](https://www.monolisa.dev) - ligatures enabled
+
+Plugins:
+
+#### AceJump
+
+[AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
+
+Hotkey: `hyper + ;`
+
+#### Github Copilot
+
+[Copilot](https://plugins.jetbrains.com/plugin/17718-github-copilot)
+
+#### JPA Buddy
+
+[JPA Buddy](https://plugins.jetbrains.com/plugin/15075-jpa-buddy)
+
+#### Mario Progress Bar
+
+[Mario Progress Bar](https://plugins.jetbrains.com/plugin/14708-mario-progress-bar)
+
+#### Rainbow Bracket
+
+[Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
+
+#### Return Highlighter
+[Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)

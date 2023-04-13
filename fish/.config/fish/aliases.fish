@@ -51,4 +51,3 @@ alias k="kubectl"
 ## Chatgpt wrapper
 ## https://github.com/mmabrouk/chatgpt-wrapper
 alias ai="chatgpt"
-
