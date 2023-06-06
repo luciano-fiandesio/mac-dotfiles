@@ -101,6 +101,14 @@ This is a template:
 
 I use [AstroVim](https://github.com/AstroNvim/AstroNvim).
 
+```
+mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim
+```
+
 ## Karabinier
 
 Mainly to setup the Hyperkey (`caps_lock` to `command+control+option+shift`) and get the `~` key to work. 
@@ -126,7 +134,21 @@ mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.
 
 ### Docker
 
+I use [Colima](https://github.com/abiosoft/colima) as Docker Desktop replacement.
 
+Run the following commands to setup `docker compose` as a plugin:
+
+```
+mkdir -p ~/.docker/cli-plugins
+
+ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+```
+
+Run `docker compose`
+
+```
+docker compose
+```
 
 ### Install other development dependencies
 
@@ -178,3 +200,23 @@ Hotkey: `hyper + ;`
 - [Mario Progress Bar](https://plugins.jetbrains.com/plugin/14708-mario-progress-bar)
 - [Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
 - [Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)
+
+
+### cheat.sh
+
+<https://github.com/chubin/cheat.sh>
+
+Unified access to the best community driven cheat sheets repositories of the world.
+
+
+```
+mkdir ~/.local/bin
+
+curl https://cht.sh/:cht.sh > ~/.local/bin/cht.sh
+
+chmod +x ~/.local/bin/cht.sh
+
+brew install rlwrap
+
+# enjoy!
+```

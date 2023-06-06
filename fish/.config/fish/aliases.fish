@@ -25,6 +25,10 @@ abbr rm rip # use rip (https://github.com/nivekuil/rip) instead of rm
             # (experimental)
 abbr frm 'rm -fr'
 
+# Docker
+abbr d docker
+abbr dc "docker compose"
+
 alias ls='lsd' # use LSDeluxe (https://github.com/Peltoche/lsd)
 alias ll='ls -la'
 alias l='ls -l'
@@ -50,4 +54,7 @@ alias k="kubectl"
 
 ## Chatgpt wrapper
 ## https://github.com/mmabrouk/chatgpt-wrapper
-alias ai="chatgpt"
+#alias ai="chatgpt"
+
+## cheat.sh
+abbr cs cht.sh
