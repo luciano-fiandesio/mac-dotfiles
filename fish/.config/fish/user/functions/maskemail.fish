@@ -4,6 +4,6 @@
 # 
 function maskemail 
    
-   $HOME/go/bin/maskedemail-cli -token $FASTMAIL_MASKEDMAIL_TOKEN create $argv[1] | pbcopy
+   $HOME/go/bin/maskedemail-cli -token $FASTMAIL_MASKEDMAIL_TOKEN create -domain $argv[1] | pbcopy
    echo "done!"
 end
