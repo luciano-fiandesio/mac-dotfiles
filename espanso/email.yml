@@ -1,0 +1,10 @@
+name: emails
+parent: default
+
+matches:
+  - trigger: ":email"
+    replace: "luciano@fiandes.io"
+  - trigger: ":proemail"
+    replace: "luciano@fiandesio.com"
+  - trigger: ":aliasemail"
+    replace: "$|$@lfi.fastmail.fm"

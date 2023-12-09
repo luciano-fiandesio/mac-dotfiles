@@ -1,0 +1,30 @@
+matches:
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+  
+  - trigger: ":me"
+    form: |
+      [[choices]]
+    form_fields:
+      choices:
+        type: list
+        values:
+          - Luciano
+          - Luciano Fiandesio
+          - Fiandesio
+
+# Markdown
+
+  # creates block with clipboard text
+  - trigger: "ccc"
+    force_clipboard: true
+    replace: "```$|$\n{{clipboard}}\n```\n"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"

@@ -1,0 +1,7 @@
+name: phone-numbers
+parent: default
+
+matches:
+  - trigger: ":phone"
+    replace: "+49 172 7568955"
+      

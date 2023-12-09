@@ -1,0 +1,12 @@
+matches:
+  - trigger: ":me"
+    form: |
+      [[choices]]
+    form_fields:
+      choices:
+        type: list
+        values:
+          - Luciano
+          - Luciano Fiandesio
+          - Fiandesio
+
