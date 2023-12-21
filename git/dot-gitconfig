@@ -2,7 +2,7 @@
     path = ~/.gitconfig.local
 [credential]
     # save credentials in memory for 3600 seconds
-    helper = cache --timeout=3600
+	helper = osxkeychain
 [core]
     abbrev = 12
     # from git 2.8.0
