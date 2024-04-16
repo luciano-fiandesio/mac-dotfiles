@@ -52,9 +52,8 @@ alias b="git branch | fzf | xargs git checkout"
 ## Kube
 alias k="kubectl"
 
-## Chatgpt wrapper
-## https://github.com/mmabrouk/chatgpt-wrapper
-#alias ai="chatgpt"
+# aichat - https://github.com/sigoden/aichat
+abbr ai aichat -e
 
 ## cheat.sh
 abbr cs cht.sh

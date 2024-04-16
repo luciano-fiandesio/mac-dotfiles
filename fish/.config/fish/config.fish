@@ -1,9 +1,10 @@
 # fish config
-set --global --export DOTFILES_REPO ~/.dotfiles-arch
+set --global --export DOTFILES_REPO ~/.mac-dotfiles
 
 # no greeting
 set fish_greeting
 
+source ~/.config/fish/env.fish
 source ~/.config/fish/path.fish
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/functions.fish

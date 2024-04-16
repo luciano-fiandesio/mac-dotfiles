@@ -1,0 +1,11 @@
+model: claude:claude-3-opus-20240229         # LLM Model
+temperature: 1.0  
+save: true                 # Whether to save the messages
+wrap_code: true
+ctrlc_exit: true
+keybindings: vi            # REPL keybindings. (emacs, vi)
+
+clients:
+
+  - type: claude
+    # api_key: use env variable CLAUDE_API_KEY
