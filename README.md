@@ -2,7 +2,6 @@
 
 My macOS-specific dotfiles 🤘.
 
-I also maintain a ArchLinux-specific dotfiles repo.
 
 ![kitty](doc/screenshot.png?raw=true)
 
@@ -99,15 +98,9 @@ This is a template:
 
 ## Neovim
 
-I use [AstroVim](https://github.com/AstroNvim/AstroNvim).
+I use [LazyVim](http://www.lazyvim.org).
 
-```
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-nvim
-```
+Checkout the [Installation](http://www.lazyvim.org/installation) page for updated instructions.
 
 ## Karabinier
 
