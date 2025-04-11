@@ -1,0 +1,9 @@
+name: llm
+parent: default
+
+matches:
+  - trigger: ":code"
+    replace: |
+             <CODE>
+             $|$
+             </CODE>

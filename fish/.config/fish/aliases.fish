@@ -43,7 +43,7 @@ alias v='vim'
 alias hosts='sudo $EDITOR /etc/hosts'
 
 ## DEV
-alias msk 'mvn clean install -Dmaven.test.skip=true'
+alias msk 'mvn clean install -DskipTests'
 
 ## MISC
 
@@ -57,3 +57,9 @@ abbr ai aichat -e
 
 ## cheat.sh
 abbr cs cht.sh
+
+# aider
+
+abbr agpt aider --4o
+abbr ason aider --sonnet
+abbr adeep aider --deepseek

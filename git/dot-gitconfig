@@ -3,6 +3,8 @@
 [credential]
     # save credentials in memory for 3600 seconds
 	helper = osxkeychain
+[column]
+    ui = auto
 [core]
     abbrev = 12
     # from git 2.8.0
@@ -52,13 +54,18 @@
 [fetch]
     # Remove unreachable objects on fetch  
     prune = true
+    pruneTags = true
+    all = true
 [pull]
     # use --rebase on pull
-    rebase = true
+    #rebase = true
 [push]
     followTags = true
+    default = simple
+    autoSetupRemote = true
 [branch]
     autoSetupRebase = always
+    sort = -committerdate
 [rebase]
     abbreviateCommands = true
     autoSquash = true
@@ -99,3 +106,5 @@
     file-decoration-style = none
 [init]
 	defaultBranch = main
+[help]
+  autocorrect = prompt

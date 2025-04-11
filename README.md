@@ -2,7 +2,6 @@
 
 My macOS-specific dotfiles 🤘.
 
-
 ![kitty](doc/screenshot.png?raw=true)
 
 This dotfiles are customized for my needs and are mostly revolving around building a pleasant development experience.
@@ -28,10 +27,9 @@ If you are using this repo, you may want to review which applications and comman
 
 `stow starship`
 
-
 ## Make fish the default shell
 
-I use [Fish](https://fishshell.com/) as my primary shell. 
+I use [Fish](https://fishshell.com/) as my primary shell.
 
 ```
 command -v fish | sudo tee -a /etc/shells
@@ -46,6 +44,7 @@ chsh -s "$(command -v fish)"
 Fish automatically loads a `.local.fish` file that can be used to store secrets and API keys:
 
 .local.fish
+
 ```
 set -Ux OPENAI_API_KEY sk-12345667
 ```
@@ -57,20 +56,17 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 fish fisher/install.fish
 ```
 
-## Configure Kitty
+## Configure Ghostty
 
-[Kitty](https://sw.kovidgoyal.net/kitty/) is my terminal emulator of choice, mostly because of its configurability and speed.
+[Ghostty](https://ghostty.org) is my terminal emulator of choice, mostly because of its configurability and speed.
 
-`stow kitty`
-
-Kitty uses the Hyperkey (CapsLock) as mod key (see the Karabinier section). 
+`stow ghostty`
 
 ## Configure Git
 
 Git configuration and git aliases. Highly customized, you may want to review it before using it.
 
 `stow git`
-
 
 The `.gitconfig` file requires a local `.gitconfig.local` file, where sensitive info are stored.
 
@@ -81,9 +77,9 @@ This is a template:
   name = [name lastname]
   email = [email]
   useConfigOnly = false # see: https://collectiveidea.com/blog/archives/2016/04/04/multiple-personalities-in-git
-  signingkey = [sign key] 
+  signingkey = [sign key]
 [github]
-  user = [github user] 
+  user = [github user]
   token = [github token]
 [commit]
   gpgSign = false
@@ -95,7 +91,6 @@ This is a template:
 
 `stow lsd`
 
-
 ## Neovim
 
 I use [LazyVim](http://www.lazyvim.org).
@@ -104,14 +99,21 @@ Checkout the [Installation](http://www.lazyvim.org/installation) page for update
 
 ## Karabinier
 
-Mainly to setup the Hyperkey (`caps_lock` to `command+control+option+shift`) and get the `~` key to work. 
+Mainly to setup the Hyperkey (`caps_lock` to `command+control+option+shift`) and get the `~` key to work.
 
 `stow karabinier`
+
+## Phoenix
+
+My [favourite](https://github.com/kasper/phoenix) window manager, can be configured using Javascript.
+
+`stow phoenix`
+
+Tiling movements are mapped to Hyperkey + arrow keys.
 
 ## Development
 
 Short intro to `direnv` and `asdf`: <https://www.keybits.net/blog/asdf-and-direnv-isolated-environment-heaven>
-
 
 ### Install asdf
 
@@ -144,7 +146,6 @@ docker compose
 ```
 
 ### Install other development dependencies
-
 
 Setup `direnv`
 
@@ -183,7 +184,6 @@ Fonts: [MonoLisa](https://www.monolisa.dev) - ligatures enabled
 
 **Plugins:**
 
-
 - [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
 
 Hotkey: `hyper + ;`
@@ -194,13 +194,11 @@ Hotkey: `hyper + ;`
 - [Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
 - [Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)
 
-
 ### cheat.sh
 
 <https://github.com/chubin/cheat.sh>
 
 Unified access to the best community driven cheat sheets repositories of the world.
-
 
 ```
 mkdir ~/.local/bin
