@@ -111,47 +111,13 @@ My [favourite](https://github.com/kasper/phoenix) window manager, can be configu
 
 Tiling movements are mapped to Hyperkey + arrow keys.
 
-## Development
-
-Short intro to `direnv` and `asdf`: <https://www.keybits.net/blog/asdf-and-direnv-isolated-environment-heaven>
-
-### Install asdf
-
-[asdf.vm](https://asdf-vm.com) is a versatile version manager for programming languages and development tools. It enables users to easily manage multiple versions of languages like Ruby, Node.js, and Elixir, streamlining the development process.
-
-Check the [asdf installation guide](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies) for updated instructions.
-
-```
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-
-mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-```
-
 ### Docker
 
-I use [Colima](https://github.com/abiosoft/colima) as Docker Desktop replacement.
+I use [OrbStack](https://orbstack.dev) as Docker Desktop replacement.
 
-Run the following commands to setup `docker compose` as a plugin:
+Compose and other tools are included in OrbStack.
 
-```
-mkdir -p ~/.docker/cli-plugins
-
-ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-```
-
-Run `docker compose`
-
-```
-docker compose
-```
-
-### Install other development dependencies
-
-Setup `direnv`
-
-```
-./dev/setup.sh
-```
+### Setup development environment
 
 #### java
 
@@ -164,14 +130,10 @@ Install the required JVM and tooling (Gradle, Maven, etc.)
 
 #### python
 
+Install `uv`.
+
 ```
 ./dev/python/setup.sh
-```
-
-#### node
-
-```
-dev/node/setup.sh
 ```
 
 ### IntelliJ
@@ -193,21 +155,3 @@ Hotkey: `hyper + ;`
 - [Mario Progress Bar](https://plugins.jetbrains.com/plugin/14708-mario-progress-bar)
 - [Rainbow Bracket](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)
 - [Return Highlighter](https://plugins.jetbrains.com/plugin/13303-return-highlighter)
-
-### cheat.sh
-
-<https://github.com/chubin/cheat.sh>
-
-Unified access to the best community driven cheat sheets repositories of the world.
-
-```
-mkdir ~/.local/bin
-
-curl https://cht.sh/:cht.sh > ~/.local/bin/cht.sh
-
-chmod +x ~/.local/bin/cht.sh
-
-brew install rlwrap
-
-# enjoy!
-```
