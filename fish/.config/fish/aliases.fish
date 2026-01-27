@@ -1,13 +1,25 @@
 # Navigation
 
-function ..    ; cd .. ; end
-function ...   ; cd ../.. ; end
-function ....  ; cd ../../.. ; end
-function ..... ; cd ../../../.. ; end
+function ..
+    cd ..
+end
+function ...
+    cd ../..
+end
+function ....
+    cd ../../..
+end
+function .....
+    cd ../../../..
+end
 
 # Utilities
-function grep     ; command grep --color=auto $argv ; end
-function g ; git $argv ; end
+function grep
+    command grep --color=auto $argv
+end
+function g
+    git $argv
+end
 
 # mv, rm, cp
 alias mv 'command gmv --interactive --verbose'
@@ -22,7 +34,7 @@ abbr gi git
 abbr gti git
 abbr v vim
 abbr rm rip # use rip (https://github.com/nivekuil/rip) instead of rm
-            # (experimental)
+# (experimental)
 abbr frm 'rm -fr'
 
 # docker
@@ -63,19 +75,19 @@ alias k="kubectl"
 abbr ai aichat -e
 
 # unix
-abbr -a -g c 'clear'
+abbr -a -g c clear
 abbr -a -g df 'df -h'
 abbr -a -g du 'du -h'
 abbr -a -g dud 'du -d 1 -h'
 abbr -a -g duf 'du -sh *'
-abbr -a -g cat 'bat'
+abbr -a -g cat mcat
 abbr -a -g cp 'gcp -iv'
 abbr -a -g l 'ls -lhF --git'
 abbr -a -g mkdir 'mkdir -pv'
 abbr -a -g mv 'mv -iv'
 
 # claude code
-abbr -a -g cl 'claude'
+abbr -a -g cl claude
 abbr -a -g clsp 'claude --dangerously-skip-permissions'
 abbr -a -g clh 'claude --help'
 abbr -a -g clv 'claude --version'
