@@ -1,12 +1,13 @@
 # use: https://ghostty.zerebos.com
 
 # Window settings
-window-decoration = false
+window-decoration = auto
 window-inherit-working-directory = true
 window-theme = dark
 window-save-state = always
 window-width = 1920
 window-height = 1080
+#macos-titlebar-style = native
 
 # Mouse settings
 mouse-hide-while-typing = true
@@ -59,3 +60,5 @@ palette = 13=#ff92df
 palette = 14=#a4ffff
 palette = 15=#ffffff
 keybind = shift+enter=text:\x1b\r
+
+keybind = global:super+shift+\=toggle_quick_terminal
