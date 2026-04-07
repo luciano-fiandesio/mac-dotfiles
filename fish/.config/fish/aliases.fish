@@ -30,6 +30,7 @@ alias chmox='chmod +x'
 
 # typos and abbreviations
 abbr g git
+alias l lazygit
 abbr gi git
 abbr gti git
 abbr v vim
@@ -50,7 +51,7 @@ abbr uvsa "source .venv/bin/activate"
 
 alias ls='lsd' # use LSDeluxe (https://github.com/Peltoche/lsd)
 alias ll='ls -la'
-alias l='ls -l'
+#alias l='ls -l'
 alias lla='ls -la'
 alias lt='ls --tree'
 alias llt='lsd -tal'
@@ -82,7 +83,7 @@ abbr -a -g dud 'du -d 1 -h'
 abbr -a -g duf 'du -sh *'
 abbr -a -g cat mcat
 abbr -a -g cp 'gcp -iv'
-abbr -a -g l 'ls -lhF --git'
+# abbr -a -g l 'ls -lhF --git'
 abbr -a -g mkdir 'mkdir -pv'
 abbr -a -g mv 'mv -iv'
 
@@ -97,3 +98,6 @@ abbr -a -g clp 'claude --print'
 abbr -a -g clcp 'claude --continue --print'
 abbr -a -g clup 'claude update'
 abbr -a -g clmcp 'claude mcp'
+
+# postgres proxy
+abbr -a -g proxy-start 'sql-tap localhost:9091'

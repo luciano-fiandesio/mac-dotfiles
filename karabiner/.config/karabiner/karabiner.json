@@ -23,6 +23,18 @@
                     }
                 ]
             },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 561,
+                        "vendor_id": 13364
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f3" },
