@@ -8,7 +8,8 @@ fisher install edc/bass
 fisher install laughedelic/brew-completions
 fisher install icezyclon/zoxide.fish
 fisher install evanlucas/fish-kubectl-completions
-fisher install joseluisq/gitnow@2.7.0
+# not working with recent fish version, see https://github.com/joseluisq/gitnow/issues/63
+#fisher install joseluisq/gitnow@2.7.0
 fisher install PatrickF1/fzf.fish
 fisher install jorgebucaran/nvm.fish
 fisher install reitzig/sdkman-for-fish@v1.4.0
