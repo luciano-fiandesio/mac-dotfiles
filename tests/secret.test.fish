@@ -2,19 +2,8 @@
 # Exercises the `secret` helper against a throwaway sops store.
 # Builds its own age key and store, so the real secrets are never touched.
 
-set -g failures 0
 set -g repo (dirname (status --current-filename))/..
-
-function check -a label expected actual
-    if test "$expected" = "$actual"
-        echo "  ok   $label"
-    else
-        echo "  FAIL $label"
-        echo "       expected: [$expected]"
-        echo "       actual:   [$actual]"
-        set -g failures (math $failures + 1)
-    end
-end
+source $repo/tests/helpers.fish
 
 # ---- throwaway store -------------------------------------------------------
 
@@ -72,11 +61,5 @@ check "secret-forget drops the memo" 1 $status
 
 # ---- result ----------------------------------------------------------------
 
-echo
-if test $failures -eq 0
-    echo "all checks passed"
-    exit 0
-else
-    echo "$failures check(s) failed"
-    exit 1
-end
+test_summary
+exit $status
