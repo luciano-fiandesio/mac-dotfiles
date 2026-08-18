@@ -11,7 +11,8 @@ fisher install evanlucas/fish-kubectl-completions
 # not working with recent fish version, see https://github.com/joseluisq/gitnow/issues/63
 #fisher install joseluisq/gitnow@2.7.0
 fisher install PatrickF1/fzf.fish
-fisher install jorgebucaran/nvm.fish
-fisher install reitzig/sdkman-for-fish@v1.4.0
+#fisher install jorgebucaran/nvm.fish
+#fisher install reitzig/sdkman-for-fish@v1.4.0
 fisher install jorgebucaran/autopair.fish
 fisher install sters/fish-git-branch-prune
+fisher install meaningful-ooo/sponge
