@@ -27,7 +27,7 @@ age-keygen -o $tmp/keys.txt 2>/dev/null
 set -g pubkey (grep -o 'age1[a-z0-9]*' $tmp/keys.txt | head -1)
 
 printf 'creation_rules:\n  - key_groups:\n      - age: [%s]\n' $pubkey >$tmp/.sops.yaml
-printf 'PLAIN_KEY: plain-value\nEQUALS_KEY: abc=def=ghi\n' >$tmp/secrets.enc.yaml
+printf 'PLAIN_KEY: plain-value\nEQUALS_KEY: abc=def=ghi\nPLACEHOLDER_KEY: REPLACE_ME\n' >$tmp/secrets.enc.yaml
 
 env SOPS_AGE_KEY_FILE=$tmp/keys.txt \
     sops -e -i --config $tmp/.sops.yaml $tmp/secrets.enc.yaml
@@ -51,6 +51,11 @@ check "missing key prints nothing on stdout" "" "$out"
 
 secret >/dev/null 2>&1
 check "no argument is a usage error" 2 $status
+
+set -l ph (secret PLACEHOLDER_KEY 2>/dev/null)
+set -l phst $status
+check "unfilled placeholder is refused" 3 $phst
+check "placeholder prints nothing on stdout" "" "$ph"
 
 # ---- memoisation -----------------------------------------------------------
 # Deleting the store proves the second lookup was served from memory rather

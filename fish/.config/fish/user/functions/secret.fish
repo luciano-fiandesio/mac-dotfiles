@@ -1,5 +1,8 @@
 # Reads a single value out of the sops-encrypted secret store.
 # Decrypts the store once per shell, then answers later lookups from memory.
+#
+# Exit codes: 1 unknown key or unreadable store, 2 no argument,
+#             3 key present but still holding its REPLACE_ME placeholder.
 
 function secret --description 'Read a value from the encrypted secret store'
     set -l name $argv[1]
@@ -8,14 +11,15 @@ function secret --description 'Read a value from the encrypted secret store'
         return 2
     end
 
+    set -l store $SECRET_STORE_FILE
+    test -n "$store"; or set store ~/.config/secrets/secrets.enc.yaml
+
     if not set -q __secret_store
         if not type -q sops
             echo "secret: sops is not installed" >&2
             return 127
         end
 
-        set -l store $SECRET_STORE_FILE
-        test -n "$store"; or set store ~/.config/secrets/secrets.enc.yaml
         if not test -f "$store"
             echo "secret: store not found at $store" >&2
             return 1
@@ -36,7 +40,12 @@ function secret --description 'Read a value from the encrypted secret store'
             continue
         end
         if test "$pair[1]" = "$name"
-            printf '%s\n' (string trim --chars='"' -- $pair[2])
+            set -l value (string trim --chars='"' -- $pair[2])
+            if test "$value" = REPLACE_ME
+                echo "secret: $name is still a placeholder; fill it in with: sops $store" >&2
+                return 3
+            end
+            printf '%s\n' $value
             return 0
         end
     end
