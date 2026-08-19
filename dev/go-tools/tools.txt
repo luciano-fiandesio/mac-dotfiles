@@ -1,0 +1,5 @@
+# Go command line tools, one module path per line.
+# Blank lines and #-comments are ignored.
+
+# fastmail masked addresses, used by the maskemail fish function
+github.com/dvcrn/maskedemail-cli@latest

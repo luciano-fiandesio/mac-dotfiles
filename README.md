@@ -41,13 +41,15 @@ chsh -s "$(command -v fish)"
 
 `stow fish`
 
-Fish automatically loads a `.local.fish` file that can be used to store secrets and API keys:
+Fish automatically loads a `.local.fish` file, for settings that belong to one machine only:
 
 .local.fish
 
 ```
-set -Ux OPENAI_API_KEY sk-12345667
+set -gx SOME_MACHINE_LOCAL_SETTING value
 ```
+
+API keys are not kept here, see [Secrets](#secrets).
 
 ## Install fisher (fish plugin manager) and the plugins
 
@@ -84,6 +86,99 @@ This is a template:
 [commit]
   gpgSign = false
 ```
+
+## Secrets
+
+API keys live in a private [sops](https://github.com/getsops/sops)-encrypted store, decrypted
+with an [age](https://github.com/FiloSottile/age) key that never leaves the machine that
+generated it. The store is a separate private repo, cloned to `~/.config/secrets`.
+
+Read a key from the shell:
+
+```
+secret OPENAI_API_KEY
+```
+
+The store is decrypted once per shell, on the first lookup, and held in memory afterwards.
+Nothing is decrypted at startup, so a shell that never asks for a secret never pays for one.
+
+### Setting up a new machine
+
+`sops` and `age` are both in the Brewfile. On Linux, install them from the package manager first.
+
+**1. Generate this machine's age key**
+
+```
+mkdir -p ~/.config/sops/age && chmod 700 ~/.config/sops/age
+age-keygen -o ~/.config/sops/age/keys.txt
+```
+
+Note the `age1...` public key it prints, it is needed in step 3. The private key stays here:
+every machine generates its own and they are never copied around.
+
+**2. On macOS, make the key visible outside fish**
+
+```
+mkdir -p ~/Library/"Application Support"/sops/age
+ln -sfn ~/.config/sops/age/keys.txt ~/Library/"Application Support"/sops/age/keys.txt
+```
+
+`SOPS_AGE_KEY_FILE` in `env.fish` covers fish sessions on both platforms. This symlink covers
+everything else, because sops looks under `~/Library/Application Support` on macOS and under
+`~/.config` on Linux.
+
+**3. Enrol the new key, on a machine that already has access**
+
+The new machine cannot do this itself: it cannot decrypt the store yet. In `~/.config/secrets`
+on an enrolled machine, add the `age1...` public key to the `keys:` list in `.sops.yaml`,
+reference it in the `key_groups` block, then re-encrypt and push:
+
+```
+sops updatekeys secrets.enc.yaml
+git commit -am "Add <machine> as a recipient" && git push
+```
+
+**4. Clone the store on the new machine**
+
+```
+git clone https://github.com/luciano-fiandesio/dotfiles-secrets.git ~/.config/secrets
+chmod 700 ~/.config/secrets
+```
+
+**5. Verify**
+
+```
+secret OPENAI_API_KEY
+```
+
+### Editing and rotating
+
+```
+sops ~/.config/secrets/secrets.enc.yaml
+```
+
+Opens the decrypted file in `$EDITOR` and re-encrypts it on save. Commit and push afterwards.
+
+Shells started before the edit still hold the old values in memory. Run `secret-forget` in each,
+or open a new shell.
+
+### Recovery
+
+Every value is also encrypted to an offline backup key, held off all machines and protected by a
+passphrase. If every machine is lost, the store still opens with it:
+
+```
+age -d /path/to/age-backup-key.age > /tmp/backup-id.txt && chmod 600 /tmp/backup-id.txt
+env HOME=$(mktemp -d) SOPS_AGE_KEY_FILE=/tmp/backup-id.txt sops -d ~/.config/secrets/secrets.enc.yaml
+command rm -f /tmp/backup-id.txt
+```
+
+Overriding `HOME` forces sops to ignore the machine key, so this exercises the backup rather than
+quietly succeeding with the wrong identity.
+
+Removing a recipient does not protect values already committed: git history keeps the old
+ciphertext. Decommissioning a machine means removing it from `.sops.yaml` **and** rotating the
+keys it could read.
 
 ## LSDeluxe
 
@@ -135,6 +230,17 @@ Install `uv`.
 ```
 ./dev/python/setup.sh
 ```
+
+#### go
+
+Command line tools written in Go are listed in `dev/go-tools/tools.txt`:
+
+```
+dev/go-tools/install.sh              # install everything listed
+dev/go-tools/install.sh --dry-run    # show what would be installed
+```
+
+They land in `~/go/bin`, which `path.fish` puts on `PATH`.
 
 ### IntelliJ
 

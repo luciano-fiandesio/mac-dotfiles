@@ -43,7 +43,10 @@ function daily-update --description 'Keep everything up to date'
     repos-update
 
     __echo-phase "Install dotfiles"
-    install-dotfiles
+    #install-dotfiles
+
+    __echo_phase "Update mise"
+    mise up
 
     echo "Finished daily update routine 😄"
 end
